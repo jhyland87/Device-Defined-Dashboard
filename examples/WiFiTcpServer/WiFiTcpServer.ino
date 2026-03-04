@@ -197,7 +197,7 @@ static void onNewClient(void* /*arg*/, AsyncClient* c) {
             return;
         }
     }
-    Serial.println("[tcp] Max clients reached, rejecting");
+    Serial.println(F("[tcp] Max clients reached, rejecting"));
     c->close();
 }
 
@@ -271,7 +271,7 @@ static void dashboardTask(void* /*arg*/) {
         dashboard.update(telemetry);
         const size_t len = dashboard.serialize(txBuf, kTxBufSize);
         if (len == 0) {
-            Serial.println("[dashboard] serialize() failed");
+            Serial.println(F("[dashboard] serialize() failed"));
             continue;
         }
 
@@ -287,10 +287,10 @@ static void dashboardTask(void* /*arg*/) {
 static void connectWifi() {
     WiFi.mode(WIFI_STA);
     WiFi.begin(kSsid, kPassword);
-    Serial.print("[wifi] Connecting");
+    Serial.println(F("[wifi] Connecting"));
     while (WiFi.status() != WL_CONNECTED) {
         delay(500);
-        Serial.print(".");
+        Serial.print(F("."));
     }
     Serial.println();
     Serial.printf("[wifi] IP: %s\n", WiFi.localIP().toString().c_str());

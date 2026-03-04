@@ -108,7 +108,7 @@ void setup() {
     Serial.begin(115200);
     while (!Serial) delay(10);   // wait for USB-CDC enumeration
 
-    Serial.println("[app] Environment Monitor starting");
+    Serial.println(F("[app] Environment Monitor starting"));
 
     dashboard.begin();
     Serial.printf("[app] Dashboard frame size: ~%u bytes\n",
@@ -136,6 +136,6 @@ void loop() {
     if (len > 0) {
         Serial.write(txBuf, len);
     } else {
-        Serial.println("[app] serialize() failed — buffer too small?");
+        Serial.println(F("[app] serialize() failed — buffer too small?"));
     }
 }
