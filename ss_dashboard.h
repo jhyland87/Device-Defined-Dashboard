@@ -29,7 +29,9 @@ namespace ss {
 class Dashboard {
 public:
     // Maximum number of dataset→telemetry mappings.
-    static constexpr uint8_t kMaxSlots = 48;
+    // Must be >= total dataset count across all groups in the active config.
+    // Current config has 50 datasets (11+5+2+6+16+5+5); 64 gives headroom.
+    static constexpr uint8_t kMaxSlots = 64;
 
     /**
      * Construct a Dashboard from the supplied configuration.
